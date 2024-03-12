@@ -1,10 +1,22 @@
 import krpc
 from textual.app import App, ComposeResult
+from textual.containers import ScrollableContainer
+from textual.reactive import reactive
 from textual.widgets import Header, Footer, Button, Static
+class Buttons(Static):
+    def compose(self) -> ComposeResult:
+        """Create Widgets"""
+        yield Button("STAGE", id="stage1", variant="success")
+        yield Button("STAGE", id="stageclick")
+        """
+        yield Button("Stage 3")
+        """
+
 
 
 class KSPcontoller(App):
     """A textual app to control rockets in Kerbal Space Program"""
+    CSS_PATH = "coollookingthing.tcss"
     BINDINGS = [
         ("z", "throttle_up", "increases the throttle"),
         ("x", "throttle_down", "decreases the throttle")
@@ -18,6 +30,7 @@ class KSPcontoller(App):
     def compose(self) -> ComposeResult:
         yield Header()
         yield Footer()
+        yield ScrollableContainer(Buttons(), Buttons(), Buttons())
 
     def action_throttle_up(self) -> None:
         self.throttle_up()
@@ -25,15 +38,13 @@ class KSPcontoller(App):
     def action_throttle_down(self) -> None:
         self.throttle_down()
 
+    def on_button_pressed(self, event: Button.Pressed) -> None:
+        """Event handler called when a button is pressed."""
+        if event.button.id == "stage1":
+            print("button unpressed")
+        elif event.button.id == "stageclick":
+            print("button pressed")
 
-
-
-class Buttons(Static):
-    def compose(self) -> ComposeResult:
-        """Create Widgets"""
-        yield Button("Stage 1", id="stage1", variant="success")
-        yield Button("Stage 2")
-        yield Button("Stage 3")
 
 
 if __name__ == "__main__":
