@@ -1,19 +1,9 @@
 import krpc
 from textual.app import App, ComposeResult
 
-from textual.containers import ScrollableContainer
+from textual.containers import ScrollableContainer, Container, Horizontal, Vertical
 from textual.reactive import reactive
-from textual.widgets import Header, Footer, Button, Static
-
-class Buttons(Static):
-    def compose(self) -> ComposeResult:
-        """Create Widgets"""
-        yield Button("STAGE", id="stage", variant="success")
-
-        
-        """yield Button("Stage 3")"""
-        
-
+from textual.widgets import Header, Footer, Button, Static, Label
 
 """box is a widget that allows you to group other widgets together"""
 """
@@ -40,7 +30,16 @@ class KSPcontoller(App):
     def compose(self) -> ComposeResult:
         yield Header()
         yield Footer()
-        yield Buttons()
+        yield Container(Label("fuel"), id="fuel")
+        yield Container(Label("center top"), id="center-top")
+        yield Container(Label("right top"), id="right-top")
+
+        yield Container(Label("center middle"), id="center-middle")
+        yield Container(Label("right middle"), id="right-middle")
+
+        yield Container(Label("center bottom"), id="center-bottom")
+        yield Container(Vertical(Button("STAGE", id="stage", variant="success")), id="container")
+
 
     def action_throttle_up(self) -> None:
         self.throttle_up()

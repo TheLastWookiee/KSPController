@@ -1,20 +1,61 @@
-
-
-#stage {
-    align: right bottom;
+Screen{
+    layout: grid;
+    grid-size: 3 4;
+    grid-rows: 1fr;
+    grid-columns: 1fr;
+    grid-gutter: 1;
+}
+Label {
+    width: 100%;
+    height: 1fr;
+    padding: 1;
+    color: white;
 }
 
-#stageclick {
-    dock: right;
-    display: none;
+#fuel {
+    row-span: 3;
+    content-align: left bottom;
+    content-align-horizontal: left;
+    content-align-vertical: middle;
+    background: red;
+}
+
+#center-middle {
+    content-align: center middle;
+}
+
+#right-middle {
+    content-align: right middle;
 }
 
 
-.success {
-    background: green;
-    dock: right;
+
+#center-bottom {
+    content-align: center bottom;
 }
 
-.primary {
-    background: blue;
+#container {
+   height: 50%;
+
+    background: $panel;
+
+    border: tall $background;
+
+    content-align: right bottom;
 }
+
+
+Button {
+
+}
+
+
+.buttons {
+    width: 100%;
+    height: auto;
+    dock: bottom;
+
+}
+
+
+
