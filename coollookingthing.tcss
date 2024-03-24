@@ -1,6 +1,6 @@
 Screen{
     layout: grid;
-    grid-size: 3 4;
+    grid-size: 3 3;
     grid-rows: 1fr;
     grid-columns: 1fr;
     grid-gutter: 1;
@@ -14,11 +14,18 @@ Label {
 
 #fuel {
     row-span: 3;
-    content-align: left bottom;
-    content-align-horizontal: left;
-    content-align-vertical: middle;
+
+
     background: red;
 }
+#bottom-right {
+content-align-horizontal: right;
+content-align-vertical: bottom;
+
+}
+
+
+
 
 #center-middle {
     content-align: center middle;
@@ -32,6 +39,8 @@ Label {
 
 #center-bottom {
     content-align: center bottom;
+
+content-align-vertical: bottom;
 }
 
 #container {
